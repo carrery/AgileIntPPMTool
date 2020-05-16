@@ -37,4 +37,15 @@ public class ProjectController {
         return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
 
+    @GetMapping("/desc/{description}")
+    public ResponseEntity<?> getProjectByDescription(@PathVariable String description) {
+        Project project = projectService.findByDescription(description);
+        return new ResponseEntity<Project>(project, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects() {
+        return projectService.findAllProjects();
+    }
+
 }

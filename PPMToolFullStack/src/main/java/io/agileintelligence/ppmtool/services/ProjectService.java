@@ -29,4 +29,16 @@ public class ProjectService {
 
         return project;
     }
+
+    public Project findByDescription(String description){
+        Project project = projectRepository.findByDescription(description);
+        if (project == null){
+            throw new ProjectIdException("No project with "+description+ " description");
+        }
+        return project;
+    }
+
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
+    }
 }
